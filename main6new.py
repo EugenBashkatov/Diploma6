@@ -391,6 +391,7 @@ def draw_pic():
         print(d_cluster_chain[i])
         xstart = d_cluster_chain[i][0]
         ystart = reg_data_list[xstart]
+
         # for j in range(1,len(d_cluster_chain[i]) -1 ):
         for j in range(1,len(d_cluster_chain[i])):
             xend = d_cluster_chain[i][j]
@@ -398,6 +399,14 @@ def draw_pic():
             # ax.rays_plot(xstart,ystart,xend,yend)
             ax.plot([xstart, xend],[ystart,yend],'-g')
             print("xstart = {}, ystart = {}, xend = {}, yend = {}".format(xstart,ystart,xend,yend))
+    for i in range(0,len(d_cluster_chain)-1):
+        x_start = list(d_cluster_chain.keys())[i]
+        x_next = list(d_cluster_chain.keys())[i+1]
+        y_start = reg_data_list[x_start]
+        y_next = reg_data_list[x_next]
+        ax.plot([x_start, x_next], [y_start, y_next], '-r')
+
+
     plt.show()
     return True
 
